@@ -8,23 +8,24 @@ x = set(document_list_url)
 y = set(exist_url)
 rest_of_url = x-y
 def get_all_links_from(channel):
-    for i in range(1,181):
+    for i in range(1,180):
         get_links_from(channel,i)
 #get_all_links_from('http://news.ccsu.cn/zdyw.htm')
 def get_all_info_from(url):
         get_item_info(url)
 if __name__ == '__main__':
     pool = Pool()
-    # pool = Pool(processes=6)
+    pool = Pool(processes=5)
     try:
         pool.map(get_all_links_from,index_url)
-    except IndexError:
+        pool.close()
+        pool.join()
+    except :
         pass
-
     # try:
     #     pool.map(get_all_info_from,rest_of_url)
     #     pool.close()
     #     pool.join()
-    # except (AttributeError):
+    # except (AttributeError,IndexError):
     #     pass
-
+    #
