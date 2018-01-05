@@ -16,16 +16,16 @@ def get_all_info_from(url):
 if __name__ == '__main__':
     pool = Pool()
     pool = Pool(processes=5)
-    try:
-        pool.map(get_all_links_from,index_url)
-        pool.close()
-        pool.join()
-    except :
-        pass
     # try:
-    #     pool.map(get_all_info_from,rest_of_url)
+    #     pool.map(get_all_links_from,index_url)
     #     pool.close()
     #     pool.join()
-    # except (AttributeError,IndexError):
+    # except :
     #     pass
-    #
+    try:
+        pool.map(get_all_info_from,rest_of_url)
+        pool.close()
+        pool.join()
+    except (AttributeError,IndexError):
+        pass
+

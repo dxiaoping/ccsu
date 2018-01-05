@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import pymongo
 client = pymongo.MongoClient('localhost', 27017)
-ceshi = client['ceshi']
-url_list1 = ceshi['url_list_index']
+ku = client['ku']
+url_list1 = ku['url_list_index']
 start_url="http://news.ccsu.cn/index.htm"
 url_host="http://news.ccsu.cn/"
 def get_channel_urls(url):
@@ -18,7 +18,7 @@ def get_channel_urls(url):
         print(page_url)
         #print(link.text)
 
-# get_channel_urls(start_url)
+#get_channel_urls(start_url)
 
 ccsu_list = '''
 http://news.ccsu.cn/index.htm

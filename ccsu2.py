@@ -4,9 +4,9 @@ import time
 import pymongo
 url_host="http://news.ccsu.cn"
 client = pymongo.MongoClient('localhost', 27017)
-ceshi = client['ceshi']
-url_list = ceshi['url_list4']
-item_info = ceshi['item_info4']
+ku = client['ku']
+url_list = ku['url_list4']
+item_info = ku['item_info4']
 
 
 # 在最左边是在python 中对象的名称，后面的是在数据库中的名称
@@ -20,7 +20,7 @@ def get_links_from(channel,pages):
 
     soup = BeautifulSoup(wb_data.text, 'lxml')
     if soup.find('a'):
-        time.sleep(1)
+        # time.sleep(1)
         for link in soup.select('div.main_conRCb > ul > li > a '):
             item_link = url_host+link.get('href').split("..")[1]
             put =0
@@ -37,7 +37,6 @@ def get_links_from(channel,pages):
     else:
         pass
 #get_links_from("http://news.ccsu.cn/zdyw.htm",180)
-# spider 2
 def get_item_info(url):
     wb_data = requests.get(url)
     wb_data.encoding = 'utf-8'
