@@ -22,6 +22,7 @@ if __name__ == '__main__':
     #     pool.join()
     # except :
     #     pass
+    
     try:
         pool.map(get_all_info_from,rest_of_url)
         pool.close()
